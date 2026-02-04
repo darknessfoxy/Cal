@@ -2,65 +2,66 @@ import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class CalculadoraApp {
+
+public class Calculadora {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        Double valorUm;
-        Double valorDois;
+        double valor1, valor2, resultado;
         String operacao;
         boolean continuar;
 
-        try {
-            do {
-                System.out.println("Digite o valor um: ");
-                valorUm = scanner.nextDouble();
+        do {
+            System.out.print("Digite o primeiro valor: ");
+        valor1 = scanner.nextDouble();
 
-                System.out.println("Digite a operação( +, -, /, *): ");
-                operacao = scanner.next();
+        System.out.print("Digite o segundo valor: ");
+        valor2 = scanner.nextDouble();
 
-                System.out.println("Digite o valor dois: ");
-                valorDois = scanner.nextDouble();
+        System.out.print("Digite a operação (+, -, *, /): ");
+        operacao = scanner.next();
 
-                System.out.println("Resultado: " + realizarCalculo(valorUm, valorDois, operacao));
+        System.out.println("Resultado: " + calcular(valor1, valor2, operacao));
 
-                continuar = verificarNovaOperacao();
-            } while (continuar);
-        } catch (InputMismatchException ex) {
-            System.out.println("Os valores para calculo devem ser numéricos =)");
+        continuar = VerificarNovaOperacao
+
+    }while (continuar)
+
+
+        public static boolean verificarNovaOperacao(){
+            Scanner sc = nem Scanner(System.in);
+
+            System.out.print("Deseja realizar uma nova operação? (s/n): ");
+            return sc.nextLine().toUpperCase(Locale.ROOT).equals("N");
         }
-    }
 
-    public static boolean verificarNovaOperacao() {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Deseja realizar uma nova operação ? (S ou N): ");
-        return !sc.nextLine().toUpperCase(Locale.ROOT).equals("N");
-    }
-
-    public static Double realizarCalculo(Double valorUm, Double valorDois, String operacao) {
+    public static double calcular(double v1, double v2, String op) {
         Double respostaCalculo = 0.0;
 
-        switch (operacao) {
+        switch (op) {
             case "+":
-                respostaCalculo = valorUm + valorDois;
+                return v1 + v2;
                 break;
             case "-":
-                respostaCalculo = valorUm - valorDois;
+                return v1 - v2;
                 break;
             case "*":
-                respostaCalculo = valorUm * valorDois;
+                return v1 * v2;
                 break;
             case "/":
-                respostaCalculo = valorUm / valorDois;
-                break;
-
+                if (v2 != 0) {
+                    return v1 / v2;
+                } else {
+                    System.out.println("Erro: Divisão por zero.");
+                    return 0;
+                }
             default:
-                System.out.println("Operação é inválida =(");
+                System.out.println("Operação inválida.");
+                return 0;
         }
 
         return respostaCalculo;
     }
-}
-
+} 
+ 
