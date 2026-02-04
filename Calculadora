@@ -1,0 +1,16 @@
+public class Calculadora {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        double valor1, valor2, resultado;
+        String operacao;
+
+        System.out.print("Digite o primeiro valor: ");
+        valor1 = scanner.nextDouble();
+
+        System.out.print("Digite o segundo valor: ");
+        valor2 = scanner.nextDouble();
+
+        System.out.print("Digite a operação (+, -, *, /): ");
+        operacao = scanner.next();
