@@ -1,3 +1,8 @@
+import java.util.InputMismatchException;
+import java.util.Locale;
+import java.util.Scanner;
+
+
 public class Calculadora {
 
     public static void main(String[] args) {
@@ -5,8 +10,10 @@ public class Calculadora {
 
         double valor1, valor2, resultado;
         String operacao;
+        boolean continuar;
 
-        System.out.print("Digite o primeiro valor: ");
+        do {
+            System.out.print("Digite o primeiro valor: ");
         valor1 = scanner.nextDouble();
 
         System.out.print("Digite o segundo valor: ");
@@ -14,3 +21,46 @@ public class Calculadora {
 
         System.out.print("Digite a operação (+, -, *, /): ");
         operacao = scanner.next();
+
+        System.out.println("Resultado: " + calcular(valor1, valor2, operacao));
+
+        continuar = VerificarNovaOperacao
+
+    }while (continuar)
+
+
+        public static boolean verificarNovaOperacao(){
+            Scanner sc = nem Scanner(System.in);
+
+            System.out.print("Deseja realizar uma nova operação? (s/n): ");
+            return sc.nextLine().toUpperCase(Locale.ROOT).equals("N");
+        }
+
+    public static double calcular(double v1, double v2, String op) {
+        Double respostaCalculo = 0.0;
+
+        switch (op) {
+            case "+":
+                return v1 + v2;
+                break;
+            case "-":
+                return v1 - v2;
+                break;
+            case "*":
+                return v1 * v2;
+                break;
+            case "/":
+                if (v2 != 0) {
+                    return v1 / v2;
+                } else {
+                    System.out.println("Erro: Divisão por zero.");
+                    return 0;
+                }
+            default:
+                System.out.println("Operação inválida.");
+                return 0;
+        }
+
+        return respostaCalculo;
+    }
+} 
